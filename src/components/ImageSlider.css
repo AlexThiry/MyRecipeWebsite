@@ -15,3 +15,13 @@ img {
   width: 100%;
   height: auto;
 }
+
+.btn {
+  background-color: darkslategrey;
+  margin: 10px;
+}
+
+.btn:hover {
+  background-color: lightslategrey;
+  border-color: aliceblue;
+}

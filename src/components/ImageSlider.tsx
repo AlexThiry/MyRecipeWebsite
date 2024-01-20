@@ -4,7 +4,7 @@ import './ImageSlider.css';
 const images = [
   "src/images/frenchtoast.jpeg",
   "src/images/panckes.jpeg",
-  // Add more image URLs as needed
+  "src/images/waffles.jpeg",
 ];
 
 const ImageSlider = () => {
@@ -29,8 +29,8 @@ const ImageSlider = () => {
           <img key={index} src={image} alt={`Slide ${index + 1}`} />
         ))}
       </div>
-      <button onClick={handlePrev}>&lt;</button>
-      <button onClick={handleNext}>&gt;</button>
+      <button className='btn' onClick={handlePrev}>&lt;</button>
+      <button className='btn' onClick={handleNext}>&gt;</button>
     </div>
   );
 };
