@@ -1,13 +1,12 @@
 import './App.css'
-import Header from './components/Header'
+import ImageSlider from './components/ImageSlider'
 
 function App() {
 
   return (
     <>
-      <h1>Alex's Recipes</h1>
-      <Header/>
-      
+      <h1><em>Alex's Recipes</em></h1>
+      <ImageSlider/>
     </>
   )
 }

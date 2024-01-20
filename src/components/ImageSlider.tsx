@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Header.css'; // You can create this CSS file for styling
+import { useState } from 'react';
+import './ImageSlider.css';
 
 const images = [
   "src/images/frenchtoast.jpeg",
@@ -18,10 +18,18 @@ const ImageSlider = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
+  const transformStyle = {
+    transform: `translateX(-${currentImageIndex * 100}%)`, // Adjust for the number of images
+  };
+
   return (
     <div className="image-slider">
+      <div className="image-container" style={transformStyle}>
+        {images.map((image, index) => (
+          <img key={index} src={image} alt={`Slide ${index + 1}`} />
+        ))}
+      </div>
       <button onClick={handlePrev}>&lt;</button>
-      <img src={images[currentImageIndex]} alt={`Slide ${currentImageIndex + 1}`} />
       <button onClick={handleNext}>&gt;</button>
     </div>
   );
