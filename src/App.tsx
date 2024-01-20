@@ -5,7 +5,9 @@ function App() {
 
   return (
     <>
+      <h1>Alex's Recipes</h1>
       <Header/>
+      
     </>
   )
 }
