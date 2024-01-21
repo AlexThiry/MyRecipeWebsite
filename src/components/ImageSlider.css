@@ -1,5 +1,9 @@
-.image-slider {
+.image-slider-main-container {
   position: relative;
+  top: 80px;
+}
+
+.image-slider {
   width: 100%;
   height: 100%;
   max-width: 600px;
@@ -9,7 +13,7 @@
 
 .image-container {
   display: flex;
-  transition: all 0.5s ease-in-out; /* Smooth transition for the transform property */
+  transition: all 0.5s ease-in-out;
 }
 
 img {
@@ -20,17 +24,15 @@ img {
 .btn {
   position: absolute;
   top: 50%;
-  z-index: 1;
-  transform-origin: 50% 50%;
   background-color: #B85C38;
-  margin: 10px;
+  margin-top: -22.5px;
   font-size: 1.1em;;
   font-weight: bolder;
   transition: all 0.5s;
 }
 
 .right {
-  right: 370px;
+  right: -90px;
 }
 
 .right:hover {
@@ -38,7 +40,7 @@ img {
 }
 
 .left {
-  left: 370px;
+  left: -90px;
 }
 
 .left:hover {

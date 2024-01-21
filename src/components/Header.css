@@ -6,21 +6,44 @@
     height: 100px;
     background-color: #5C3D2E;
     border-color: grey;
+    z-index: 1;
+}
+
+.logo {
+    position: relative;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+    border-color: #5C3D2E;
+    border-width: 10px;
+    transition: all 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    /* filter: drop-shadow(5px 5px black); */
 }
 
 .headerBtn {
     position: relative;
     margin: 25px;
+    top: -45px;
     background-color: #604232;
     color: white;
     border-radius: 10px;
     border-width: 2px;
+    transition: all 0.5s;
 }
 
 .headerBtn:hover {
     border-color: white;
+    background-color: #E0C097;
 }
 
 .Sign-Up {
     background-color: #B85C38;
+}
+
+.Sign-Up:hover {
+    background-color: #f56a34;
 }

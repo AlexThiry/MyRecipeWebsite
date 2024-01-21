@@ -23,7 +23,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <div>
+    <div className="image-slider-main-container">
       <div className="image-slider">
         <div className="image-container" style={transformStyle}>
           {images.map((image, index) => (
