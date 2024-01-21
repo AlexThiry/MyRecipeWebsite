@@ -1,0 +1,16 @@
+.Container {
+    margin-top: 30px;
+}
+
+.Filter {
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #E0C097;
+    color: black;
+    transition: border-color 0.3s ease-out;
+    border: 3px solid transparent;
+}
+
+.Filter:hover {
+    border-color: #B85C38;
+}

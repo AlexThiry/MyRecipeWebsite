@@ -23,14 +23,16 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="image-slider">
-      <div className="image-container" style={transformStyle}>
-        {images.map((image, index) => (
-          <img key={index} src={image} alt={`Slide ${index + 1}`} />
-        ))}
+    <div>
+      <div className="image-slider">
+        <div className="image-container" style={transformStyle}>
+          {images.map((image, index) => (
+            <img key={index} src={image} alt={`Slide ${index + 1}`} />
+          ))}
+        </div>
       </div>
-      <button className='btn' onClick={handlePrev}>&lt;</button>
-      <button className='btn' onClick={handleNext}>&gt;</button>
+      <button className='btn left' onClick={handlePrev}>&lt;</button>
+      <button className='btn right' onClick={handleNext}>&gt;</button>
     </div>
   );
 };
