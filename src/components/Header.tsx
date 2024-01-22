@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div className="headerContainer">
             <a href="index.html"><img className="logo" src="src/images/Logos/AT Recipes-logos_transparent.png" alt="Cooking hat logo" /></a>
-            {tabs.map(tab => <button className={`headerBtn ${tab}`}>{tab}</button>)}
+            {tabs.map(tab => <button className={`headerBtn ${tab}`} key={tab}>{tab}</button>)}
         </div>
     );
 }

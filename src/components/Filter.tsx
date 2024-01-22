@@ -4,7 +4,7 @@ const Filter = () => {
     const filters = ["Breakfast", "Lunch", "Dinner", "Desert"]
     return (
         <div className="filterContainer">
-            {filters.map(filter => <button className="filter">{filter}</button>)}
+            {filters.map(filter => <button className="filter" key={filter}>{filter}</button>)}
         </div>
     );
 }
