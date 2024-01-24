@@ -5,7 +5,7 @@ const Header = () => {
 
     return (
         <div className="headerContainer">
-            {tabs.map(tab => tab == "Image" ? <a href="index.html"><img className="logo" src="src/images/Logos/AT Recipes-logos_transparent.png" alt="Cooking hat logo" /></a>:<button className={`headerBtn ${tab}`} key={tab}>{tab}</button>)}
+            {tabs.map(tab => tab == "Image" ? <a key={tab} href="index.html"><img className="logo" src="src/images/Logos/AT Recipes-logos_transparent.png" alt="Cooking hat logo" /></a>:<button className={`headerBtn ${tab}`} key={tab}>{tab}</button>)}
         </div>
     );
 }
