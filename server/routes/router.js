@@ -6,7 +6,16 @@ router.get('/', (req, res) => {
 })
 
 router.get('/api/recipes', (req, res) => {
-    res.json({"recipes": ["choco-cake", "plain-cake"]})
+    res.json({
+        "Apple Crumble": {
+            "ingredients": ["apples","flour","almond-powder","butter","sugar"],
+            "prepTime": "20min"
+        },
+        "Waffles": {
+            "ingrediends": ["flour","sugar","butter","eggs","salt","milk","baking-powder","vanilla-extract"],
+            "prepTime": "30min"
+        }
+    })
 })
 
 module.exports = router

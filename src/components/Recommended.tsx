@@ -1,12 +1,18 @@
 import {useState, useEffect} from "react";
 import "./Recommended.css"
+import RecipeIcon from "./RecipeIcon"
 
-interface RecommededData {
-    recipes?: string[];
+interface Recipe {
+    ingredients: string[];
+    prepTime: string;
 }
 
+interface RecommendedData {
+    [recipeName: string]: Recipe;
+  }
+
 const Recommended = () => {
-    const  [backendData, setBackendData] = useState<RecommededData>({});
+    const  [backendData, setBackendData] = useState<RecommendedData>({});
     
     useEffect(() => {
         fetch('/api/recipes').then(
@@ -20,15 +26,15 @@ const Recommended = () => {
     }, []);
     return (
         <div className="recommendedContainer">
-            {(typeof backendData.recipes === 'undefined') ? (
+            {Object.keys(backendData).length === 0 ? (
                 <p>Loading...</p>
             ) : (
-                backendData.recipes.map((recipe, i) => (
-                    <p key={i}>{recipe}</p>
+                Object.entries(backendData).map(([recipeName, recipe]) => (
+                    <RecipeIcon key={recipeName} recipeSent={{ recipeName, ...recipe }} />
                   ))
             )}
         </div>
     );
 }
 
-export default Recommended
+export default Recommended;
