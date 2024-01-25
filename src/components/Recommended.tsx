@@ -5,13 +5,18 @@ import RecipeIcon from "./RecipeIcon"
 interface Recipe {
     ingredients: string[];
     prepTime: string;
+    tags: string[];
 }
 
 interface RecommendedData {
     [recipeName: string]: Recipe;
-  }
+}
 
-const Recommended = () => {
+interface CurrentFilter {
+    filter: string;
+}
+
+const Recommended = (appliedFilter: CurrentFilter) => {
     const  [backendData, setBackendData] = useState<RecommendedData>({});
     
     useEffect(() => {
@@ -24,14 +29,15 @@ const Recommended = () => {
             }
         );
     }, []);
+    
     return (
         <div className="recommendedContainer">
             {Object.keys(backendData).length === 0 ? (
                 <p>Loading...</p>
             ) : (
                 Object.entries(backendData).map(([recipeName, recipe]) => (
-                    <RecipeIcon key={recipeName} recipeSent={{ recipeName, ...recipe }} />
-                  ))
+                    recipe.tags.includes(appliedFilter.filter) && <RecipeIcon key={recipeName} recipeSent={{ recipeName, ...recipe}}/>
+                ))
             )}
         </div>
     );

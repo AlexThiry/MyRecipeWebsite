@@ -9,11 +9,23 @@ router.get('/api/recipes', (req, res) => {
     res.json({
         "Apple Crumble": {
             "ingredients": ["apples","flour","almond-powder","butter","sugar"],
-            "prepTime": "20min"
+            "prepTime": "20min",
+            "tags": ["Desert"]
         },
         "Waffles": {
             "ingrediends": ["flour","sugar","butter","eggs","salt","milk","baking-powder","vanilla-extract"],
-            "prepTime": "30min"
+            "prepTime": "30min",
+            "tags": ["Breakfast"]
+        },
+        "Crepes": {
+            "ingrediends": ["flour","sugar","butter","eggs","salt","milk","baking-powder","vanilla-extract"],
+            "prepTime": "40min",
+            "tags": ["Breakfast"]
+        },
+        "Pancakes": {
+            "ingrediends": ["flour","sugar","butter","eggs","salt","milk","baking-powder","vanilla-extract"],
+            "prepTime": "1h",
+            "tags": ["Breakfast"]
         }
     })
 })
