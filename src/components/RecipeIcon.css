@@ -1,6 +1,7 @@
 .iconContainer {
     position: relative;
     width: 300px;
+    height: 180px;
     margin: 30px;
     float: left;
 }
