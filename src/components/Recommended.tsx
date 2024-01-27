@@ -16,7 +16,7 @@ interface CurrentFilter {
     filter: string;
 }
 
-const Recommended = (appliedFilter: CurrentFilter) => {
+const Recommended = ({filter}: CurrentFilter) => {
     const  [backendData, setBackendData] = useState<RecommendedData>({});
     
     useEffect(() => {
@@ -36,7 +36,7 @@ const Recommended = (appliedFilter: CurrentFilter) => {
                 <p>Loading...</p>
             ) : (
                 Object.entries(backendData).map(([recipeName, recipe]) => (
-                    recipe.tags.includes(appliedFilter.filter) && <RecipeIcon key={recipeName} recipeSent={{ recipeName, ...recipe}}/>
+                    recipe.tags.includes(filter) && <RecipeIcon key={recipeName} recipeSent={{ recipeName, ...recipe}}/>
                 ))
             )}
         </div>

@@ -1,8 +1,8 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send("WELCOME TO THE SERVER OF A.T. RECIPES")
+    res.send("WELCOME TO THE SERVER OF A.T. RECIPES");
 })
 
 router.get('/api/recipes', (req, res) => {
@@ -27,7 +27,7 @@ router.get('/api/recipes', (req, res) => {
             "prepTime": "1h",
             "tags": ["Breakfast"]
         }
-    })
+    });
 })
 
-module.exports = router
+module.exports = router;
