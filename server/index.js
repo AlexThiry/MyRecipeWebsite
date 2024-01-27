@@ -6,34 +6,24 @@ const router = require('./routes/router');
 //Setting up database
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const { error } = require('console');
 const dbPath = path.join(__dirname, 'database', 'recipes.db');
 const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
     } else {
         console.log("Database connection successful");
-        db.run(`CREATE TABLE IF NOT EXISTS recipes (recipeName, ingredients, prepTime, cookTime, totalTime, instructions, tags)`);
+        db.run(`CREATE TABLE IF NOT EXISTS recipes (recipeName TEXT, ingredients TEXT, prepTime TEXT, cookTime TEXT, totalTime TEXT, instructions TEXT, tags TEXT)`);
     }
 });
 
-const insertInfo = `INSERT INTO recipes (recipeName, ingredients, prepTime, cookTime, totalTime, instructions, tags) VALUES (?, ?, ?, ?, ?, ?, ?)`
-// db.run(insertInfo, ["Test Recipe 2", ["apples","flour","almond-powder","butter","sugar"], "50min", "10min", "60min","test2", ["Dinner"]], (err) => {
+const insertInfo = `INSERT INTO recipes (recipeName, ingredients, prepTime, cookTime, totalTime, instructions, tags) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+// db.run(insertInfo, ["Apple Crumble", "apples, flour, almond-powder, butter, sugar", "20min", "30min", "50min", "yum", "Desert"], (err) => {
 //     if (err) {
 //         console.error(err.message);
 //     } else {
 //         console.log("Data insertion successful");
 //     }
-// })
-// db.all(`SELECT * FROM recipes`, [], (err, rows) => {
-//     if (err) {
-//         console.error(err.message);
-//     } else {
-//         rows.forEach((row) => {
-//             console.log(row);
-//         });
-//     }
-// })
+// });
 
 const app = express();
 
@@ -65,11 +55,3 @@ const PORT = 4000;
 const server = app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
-
-// db.close((err) => {
-//     if (err) {
-//         console.error(err.message);
-//     } else {
-//         console.log("Database disconnection successful");
-//     }
-// })

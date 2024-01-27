@@ -17,7 +17,8 @@ interface CurrentFilter {
 }
 
 const Recommended = ({filter}: CurrentFilter) => {
-    const  [backendData, setBackendData] = useState<Recipe[]>([]);
+    console.log("Filter value:", filter);
+    const [backendData, setBackendData] = useState<Recipe[]>([]);
     useEffect(() => {
         fetch('/api/recipes').then(
             (response) => {return response.json();}
@@ -34,8 +35,9 @@ const Recommended = ({filter}: CurrentFilter) => {
             {backendData.length === 0 ? (
                 <p>Loading...</p>
             ) : (
-                backendData.map((recipe) => (
-                    recipe.tags.includes(filter) && <RecipeIcon key={recipe.recipeName} recipeSent={recipe}/>
+                backendData.filter((recipe) => recipe.tags.includes(filter))
+          .map((recipe) => (
+            <RecipeIcon key={recipe.recipeName} recipeSent={recipe} />
                 ))
             )}
         </div>
