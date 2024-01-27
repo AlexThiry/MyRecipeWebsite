@@ -3,13 +3,13 @@ import "./Recommended.css"
 import RecipeIcon from "./RecipeIcon"
 
 interface Recipe {
+    recipeName: string;
     ingredients: string[];
     prepTime: string;
+    cookTime: string;
+    totalTime: string;
+    instructions: string;
     tags: string[];
-}
-
-interface RecommendedData {
-    [recipeName: string]: Recipe;
 }
 
 interface CurrentFilter {
@@ -17,26 +17,25 @@ interface CurrentFilter {
 }
 
 const Recommended = ({filter}: CurrentFilter) => {
-    const  [backendData, setBackendData] = useState<RecommendedData>({});
-    
+    const  [backendData, setBackendData] = useState<Recipe[]>([]);
     useEffect(() => {
         fetch('/api/recipes').then(
             (response) => {return response.json();}
         ).then(
             (data) => {
                 console.log(data);
-                setBackendData(data);
+                setBackendData(data.recipes);
             }
         );
     }, []);
     
     return (
         <div className="recommendedContainer">
-            {Object.keys(backendData).length === 0 ? (
+            {backendData.length === 0 ? (
                 <p>Loading...</p>
             ) : (
-                Object.entries(backendData).map(([recipeName, recipe]) => (
-                    recipe.tags.includes(filter) && <RecipeIcon key={recipeName} recipeSent={{ recipeName, ...recipe}}/>
+                backendData.map((recipe) => (
+                    recipe.tags.includes(filter) && <RecipeIcon key={recipe.recipeName} recipeSent={recipe}/>
                 ))
             )}
         </div>
