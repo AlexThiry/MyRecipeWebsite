@@ -17,7 +17,7 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
 });
 
 const insertInfo = `INSERT INTO recipes (recipeName, ingredients, prepTime, cookTime, totalTime, instructions, tags) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-// db.run(insertInfo, ["Apple Crumble", "apples, flour, almond-powder, butter, sugar", "20min", "30min", "50min", "yum", "Desert"], (err) => {
+// db.run(insertInfo, ["Caesar Salad", "romaine lettuce, parmesan, anchoives, bread, dressing, lemon", "10min", "0min", "10min", "yum", "Lunch"], (err) => {
 //     if (err) {
 //         console.error(err.message);
 //     } else {
