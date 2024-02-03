@@ -1,17 +1,16 @@
 import './App.css'
-import Header from './components/Header'
-import ImageSlider from './components/ImageSlider'
-import Filter from './components/Filter'
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import HomePage from './pages/HomePage/Home';
 
 function App() {
 
   return (
-    <>
-      <Header/>
-      <h1 className="title"><em>Alex's Recipes</em></h1>
-      <ImageSlider/>
-      <Filter/>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<HomePage />} />
+      </Routes>
+    </Router>
   )
 }
 

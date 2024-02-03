@@ -1,5 +1,7 @@
-const SubmissionForm = () => {
-    return <h1>Add your own recipe!</h1>
+const SumbissionForm = () => {
+    return (
+        <h1>SUBMISSION FORM</h1>
+    );
 }
 
-export default SubmissionForm;
+export default SumbissionForm
