@@ -7,7 +7,7 @@ const Header = () => {
         <div className="headerContainer">
             {tabs.map(tab => tab == "Image" ? <a key={tab} href="index.html"><img className="logo" src="src/images/Logos/AT Recipes-logos_transparent.png" alt="Cooking hat logo" /></a>
             :
-            <a href={`/${tab.replace(/\s+/g, '')}`}><button className={`headerBtn ${tab}`} key={tab}>{tab}</button></a>)}
+            <a key={tab} href={`/${tab.replace(/\s+/g, '')}`}><button className={`headerBtn ${tab}`}>{tab}</button></a>)}
         </div>
     );
 }

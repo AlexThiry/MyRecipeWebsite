@@ -1,0 +1,16 @@
+.submissionFormContainer {
+    position: relative;
+    overflow-y: scroll;
+}
+
+.field {
+    padding: 10px;
+}
+
+.field.Ingredients {
+    background-color: red;
+}
+
+.field.TotalTime {
+    background-color: red;
+}
