@@ -1,3 +1,5 @@
+import './SubmissionForm.css'
+
 const SumbissionForm = () => {
     return (
         <h1>SUBMISSION FORM</h1>

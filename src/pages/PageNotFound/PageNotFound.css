@@ -1,0 +1,41 @@
+.pageNotFoundContainer {
+    position: relative;
+    top: -50px;
+}
+
+.image-text {
+    background-image: 
+    url(https://utianews.tennessee.edu/wp-content/uploads/sites/3/2020/09/melissa-askew-y4xZxzN754M-unsplash-2000x1200.jpg);
+    background-size: cover;
+    background-clip: text;
+    color: transparent;
+    font-size:250px;
+    -webkit-text-stroke: 2px white;
+    transition: all 0.5s;
+}
+
+.pageNotFoundContainer h2 {
+    position: relative;
+    top: -150px;
+}
+
+.pageNotFoundContainer p {
+    position: relative;
+    top: -125px;
+}
+
+.pageNotFoundContainer button {
+    position: relative;
+    top: -100px;
+    background-color: #604232;
+    transition: all 0.5s;
+    border-radius: 12px;
+}
+
+.image-text:hover {
+    color: white;
+}
+
+.pageNotFoundContainer button:hover {
+    background-color: #E0C097;
+}
