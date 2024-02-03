@@ -33,7 +33,7 @@ const Recommended = ({filter}: CurrentFilter) => {
     return (
         <div className="recommendedContainer">
             {backendData.length === 0 ? (
-                <p>Loading...</p>
+                <p>Fetching data from server...</p>
             ) : (
                 backendData.filter((recipe) => recipe.tags.includes(filter))
           .map((recipe) => (
