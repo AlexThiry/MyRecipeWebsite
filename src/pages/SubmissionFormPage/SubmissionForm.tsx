@@ -36,7 +36,7 @@ const SubmissionForm = () => {
         {fields.map((field) => (
           <div className={`field ${field.replace(/\s+/g, '')}`} key={field}>
             <label>{`${field}:`} <br /><br /></label>
-            <input type='text' name={`${field.replace(/\s+/g, '-')}`} required />
+            <input type='text' name={`${field.replace(/\s+/g, '')}`} required />
           </div>
         ))}
         {isPending ? (

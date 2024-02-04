@@ -13,12 +13,12 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
         console.error(err.message);
     } else {
         console.log("Database connection successful");
-        db.run(`CREATE TABLE IF NOT EXISTS recipes (recipeName TEXT, ingredients TEXT, prepTime TEXT, cookTime TEXT, totalTime TEXT, instructions TEXT, tags TEXT)`);
+        db.run(`CREATE TABLE IF NOT EXISTS recipes (Author TEXT, RecipeName TEXT, Ingredients TEXT, PrepTime TEXT, CookTime TEXT, TotalTime TEXT, Instructions TEXT, Tags TEXT)`);
     }
 });
 
-const insertInfo = `INSERT INTO recipes (recipeName, ingredients, prepTime, cookTime, totalTime, instructions, tags) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-// db.run(insertInfo, ["Caesar Salad", "romaine lettuce, parmesan, anchoives, bread, dressing, lemon", "10min", "0min", "10min", "yum", "Lunch"], (err) => {
+const insertInfo = `INSERT INTO recipes (Author, RecipeName, Ingredients, PrepTime, CookTime, TotalTime, Instructions, Tags) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+// db.run(insertInfo, ["Alex", "Caesar Salad", "romaine lettuce, parmesan, anchoives, bread, dressing, lemon", "10min", "0min", "10min", "yum", "Lunch"], (err) => {
 //     if (err) {
 //         console.error(err.message);
 //     } else {
@@ -38,7 +38,7 @@ const coreOptions = {
 }
 
 app.use(cors(coreOptions));
-//app.use('/', router);
+//app.use('/', router); 
 
 app.get('/api/recipes', (req, res) => {
     db.all(`SELECT * FROM recipes`, [], (err, rows) => {
@@ -47,14 +47,22 @@ app.get('/api/recipes', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
             // Send the response outside the loop
-            res.json({ recipes: rows });
+            res.status(200).json({ recipes: rows });
         }
     });
 });
 
 app.post('/api/recipes/new', (req, res) => {
     console.log("recieved data", req.body);
-    res.status(200).json({ message: "Recipe received successfully" });
+    db.run(insertInfo, [req.body.Author, req.body.RecipeName, req.body.Ingredients, req.body.PrepTime, req.body.CookTime, req.body.TotalTime, req.body.Instructions, req.body.Tags], (err) => {
+        if (err) {
+            res.status(500).json({message: `There was en error adding your recipe: ${err.message}`});
+            console.error(`There was en error adding your recipe: ${err.message}`);
+        } else {
+            res.status(200).json({ message: `${req.body.RecipeName} successfully added!`});
+            console.log(`${req.body.RecipeName} successfully added!`);
+        }
+    })
 })
 
 const PORT = 4000;

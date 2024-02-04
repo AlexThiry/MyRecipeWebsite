@@ -3,13 +3,14 @@ import "./Recommended.css"
 import RecipeIcon from "./RecipeIcon"
 
 interface Recipe {
-    recipeName: string;
-    ingredients: string[];
-    prepTime: string;
-    cookTime: string;
-    totalTime: string;
-    instructions: string;
-    tags: string[];
+    Author: string;
+    RecipeName: string;
+    Ingredients: string[];
+    PrepTime: string;
+    CookTime: string;
+    TotalTime: string;
+    Instructions: string;
+    Tags: string[];
 }
 
 interface CurrentFilter {
@@ -35,9 +36,9 @@ const Recommended = ({filter}: CurrentFilter) => {
             {backendData.length === 0 ? (
                 <p>Fetching data from server...</p>
             ) : (
-                backendData.filter((recipe) => recipe.tags.includes(filter))
+                backendData.filter((recipe) => recipe.Tags.includes(filter))
           .map((recipe) => (
-            <RecipeIcon key={recipe.recipeName} recipeSent={recipe} />
+            <RecipeIcon key={recipe.RecipeName} recipeSent={recipe} />
                 ))
             )}
         </div>
