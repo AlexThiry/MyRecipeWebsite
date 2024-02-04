@@ -1,16 +1,37 @@
 .submissionFormContainer {
     position: relative;
-    overflow-y: scroll;
+    overflow-y: visible;
 }
 
 .field {
+    margin: 10px;
+}
+
+.field input[type=text]{
+    width: 200px;
     padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: medium;
+    resize:vertical;
 }
 
-.field.Ingredients {
-    background-color: red;
+.field input:active {
+    width: auto;
 }
 
-.field.TotalTime {
-    background-color: red;
+.field input:focus {
+    max-width: 200px;
+    border-color: #B85C38;
+}
+
+.submit-button {
+    position: relative;
+    top: 20px;
+    transition: all 0.5s;
+}
+
+.submit-button:hover {
+    background-color: #B85C38;
 }

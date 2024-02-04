@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios')
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const router = require('./routes/router');
@@ -50,6 +51,11 @@ app.get('/api/recipes', (req, res) => {
         }
     });
 });
+
+app.post('/api/recipes/new', (req, res) => {
+    console.log("recieved data", req.body);
+    res.status(200).json({ message: "Recipe received successfully" });
+})
 
 const PORT = 4000;
 const server = app.listen(PORT, () => {
