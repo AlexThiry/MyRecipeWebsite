@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import './SubmissionForm.css';
 import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './SubmissionForm.css';
 
 const SubmissionForm = () => {
   const fields = ["Author", "Recipe Name", "Prep Time", "Cook Time", "Total Time", "Ingredients", "Instructions", "Tags"];
 
   const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ const SubmissionForm = () => {
       console.error("Error adding recipe", error);
     } finally {
       setIsPending(false);
+      navigate('/');
     }
   };
 
