@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import './SubmissionForm.css';
 
 const SubmissionForm = () => {
-  const fields = ["Author", "Recipe Name", "Prep Time", "Cook Time", "Total Time", "Ingredients", "Instructions", "Tags"];
+  const fields = ["Author", "Recipe Name", "Prep Time", "Cook Time", "Total Time", "Ingredients", "Instructions", "Tags", "Image"];
+  const fieldType = ["text", "text", "number", "number", "number", "text", "text", "text", "file"];
 
   const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
@@ -33,10 +34,10 @@ const SubmissionForm = () => {
     <div className='submissionFormContainer'>
       <h1>ADD YOUR OWN RECIPE!</h1>
       <form onSubmit={handleSubmit}>
-        {fields.map((field) => (
+        {fields.map((field, i) => (
           <div className={`field ${field.replace(/\s+/g, '')}`} key={field}>
             <label>{`${field}:`} <br /><br /></label>
-            <input type='text' name={`${field.replace(/\s+/g, '')}`} required />
+            <input type={fieldType[i]} name={`${field.replace(/\s+/g, '')}`} required />
           </div>
         ))}
         {isPending ? (

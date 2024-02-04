@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/recipes/:recipeId" element={<HomePage />} />
         <Route path="/Popular" element={<PopularRecipes />} />
-        <Route path="/AddYourOwn" element={<SumbissionForm />} />
+        <Route path="/Add-Your-Own" element={<SumbissionForm />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>

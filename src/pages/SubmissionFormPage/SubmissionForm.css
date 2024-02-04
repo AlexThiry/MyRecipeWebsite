@@ -7,7 +7,7 @@
     margin: 10px;
 }
 
-.field input[type=text]{
+.field input{
     width: 200px;
     padding: 10px;
     border: 1px solid white;
