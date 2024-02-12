@@ -11,6 +11,7 @@ interface Recipe {
     TotalTime: string;
     Instructions: string;
     Tags: string[];
+    Image: string;
 }
 
 interface CurrentFilter {

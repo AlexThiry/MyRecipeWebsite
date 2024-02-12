@@ -17,6 +17,8 @@ const SubmissionForm = () => {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
 
+    console.log(data)
+
     setIsPending(true);
 
     try {
@@ -37,7 +39,7 @@ const SubmissionForm = () => {
         {fields.map((field, i) => (
           <div className={`field ${field.replace(/\s+/g, '')}`} key={field}>
             <label>{`${field}:`} <br /><br /></label>
-            <input type={fieldType[i]} name={`${field.replace(/\s+/g, '')}`} required />
+            {field === "Image" ? <input type={fieldType[i]} name={`${field.replace(/\s+/g, '')}`} accept='.png,.jpeg'/> : <input type={fieldType[i]} name={`${field.replace(/\s+/g, '')}`} required />}
           </div>
         ))}
         {isPending ? (
