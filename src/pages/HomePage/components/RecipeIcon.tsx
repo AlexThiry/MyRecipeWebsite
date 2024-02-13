@@ -17,7 +17,7 @@ const RecipeIcon: React.FC<{ recipeSent: RecipeData}> = ({ recipeSent } ) => {
 
   return (
     <div className="iconContainer" >
-      <a href={`http://localhost:4000/api/recipes/${RecipeName}`} target="_blank" key={RecipeName}>
+      <a href={`http://localhost:5173/recipes/${RecipeName}`} target="_blank" key={RecipeName}>
         <img className="image" src="src/images/placeholder.png" alt={RecipeName} />
         <div className="overlay">
           <div className="text">{`${RecipeName} - ${TotalTime}`}</div>

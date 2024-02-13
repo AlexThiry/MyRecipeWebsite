@@ -28,7 +28,9 @@ const Recommended = ({filter}: CurrentFilter) => {
                 console.log(data);
                 setBackendData(data.recipes);
             }
-        );
+        ).catch((error) => {
+            console.error('Error fetching recipes:', error);
+        });
     }, []);
     
     return (

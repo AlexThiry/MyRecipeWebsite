@@ -53,9 +53,21 @@ app.get('/api/recipes', (req, res) => {
 });
 
 app.get('/api/recipes/:id', (req, res) => {
-    const id = req.params.id
-    res.send(`Get ${id} recipe`);
+    const id = req.params.id;
+    db.get(`SELECT * FROM recipes WHERE RecipeName = ?`, [id], (err, row) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            if (!row) {
+                res.status(404).json({ error: 'Recipe not found' });
+            } else {
+                res.status(200).json(row);
+            }
+        }
+    });
 });
+
 
 app.post('/api/recipes/new', (req, res) => {
     console.log("recieved data", req.body);
