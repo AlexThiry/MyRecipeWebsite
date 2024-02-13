@@ -1,6 +1,9 @@
 .image-slider-main-container {
   position: relative;
   top: 80px;
+  margin: auto;
+  width: 600px;
+  max-width: 100%;
 }
 
 .image-slider {

@@ -1,5 +1,8 @@
 .recommendedContainer {
+    position: relative;
+    top: 150px;
     height: 500px;
+    width: auto;
     max-width: 800px;
     display: flex;
     flex-wrap: wrap;

@@ -25,7 +25,7 @@ const Template = () => {
             (response) => {return response.json();}
         ).then(
             (data) => {
-                console.log("DATA", data);
+                console.log(data);
                 data.error ? navigate('/page-not-found') : setCurrentRecipe(data); //If recipe is nonexistent
             }
         ).catch((error) => {
@@ -42,6 +42,7 @@ const Template = () => {
             <p>Prep Time: {currentRecipe.PrepTime}</p>
             <p>Cook Time: {currentRecipe.CookTime}</p>
             <p>Total Time: {currentRecipe.TotalTime}</p>
+            <p>Ingredients: {currentRecipe.Ingredients}</p>
             <p>Instructions: {currentRecipe.Instructions}</p>
             </div>
         ) : (
