@@ -52,6 +52,11 @@ app.get('/api/recipes', (req, res) => {
     });
 });
 
+app.get('/api/recipes/:id', (req, res) => {
+    const id = req.params.id
+    res.send(`Get ${id} recipe`);
+});
+
 app.post('/api/recipes/new', (req, res) => {
     console.log("recieved data", req.body);
     db.run(insertInfo, [req.body.Author, req.body.RecipeName, req.body.Ingredients, req.body.PrepTime, req.body.CookTime, req.body.TotalTime, req.body.Instructions, req.body.Tags], (err) => {
