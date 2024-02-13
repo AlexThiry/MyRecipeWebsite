@@ -1,4 +1,5 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Recipe {
     Author: string;
@@ -12,38 +13,42 @@ interface Recipe {
 }
 
 const Template = () => {
-  const url = window.location.href;
-  const recipeId = url.slice(30).replace('%20',' ')
-  console.log(recipeId)
+    const navigate = useNavigate();
+    const url = window.location.href;
+    const recipeId = url.slice(30); //To get recipe name by ignoring the first url characters
+    console.log(recipeId);
 
-  const [allRecipes, setRecipe] = useState<Recipe[]>([]);
+    const [currentRecipe, setCurrentRecipe] = useState<Recipe | null>(null);
+    
     useEffect(() => {
-        fetch(`/api/recipes/`).then(
+        fetch(`/api/recipes/${recipeId}`).then(
             (response) => {return response.json();}
         ).then(
             (data) => {
-                console.log(data);
-                setRecipe(data.recipes);
+                console.log("DATA", data);
+                data.error ? navigate('/page-not-found') : setCurrentRecipe(data); //If recipe is nonexistent
             }
-        );
+        ).catch((error) => {
+            console.error('Error fetching recipes:', error);
+    });
     }, []);
-
-  return (
-    <div>
-      {allRecipes ? (allRecipes.map((current) => (
-        current.RecipeName === recipeId && <div>
-        <h1>{current.RecipeName}</h1>
-        <p>Author: {current.Author}</p>
-        <p>Prep Time: {current.PrepTime}</p>
-        <p>Cook Time: {current.CookTime}</p>
-        <p>Total Time: {current.TotalTime}</p>
-        <p>Instructions: {current.Instructions}</p>
-      </div>
-      ))) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+    
+    return (
+        <div>
+        {(currentRecipe && currentRecipe.Author)? (
+            <div>
+            <h1>{currentRecipe.RecipeName}</h1>
+            <p>Author: {currentRecipe.Author}</p>
+            <p>Prep Time: {currentRecipe.PrepTime}</p>
+            <p>Cook Time: {currentRecipe.CookTime}</p>
+            <p>Total Time: {currentRecipe.TotalTime}</p>
+            <p>Instructions: {currentRecipe.Instructions}</p>
+            </div>
+        ) : (
+            <p>Fetching data from server...</p>
+        )}
+        </div>
+    );
 };
 
 export default Template;
